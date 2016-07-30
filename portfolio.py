@@ -16,7 +16,7 @@ class portfolio:
         #iterate through all days for strategy
         portfolio = []
         for idx, val in enumerate(self.dates):
-            names = np.array(['date','prev_total','pos_diff','chg','return'])
+            names = np.array(['date','prev_total','chg','return'])
             today_pos = self.positions[val]#access by keys, which is date
             prev_pos =self.positions[self.dates[idx-1]]
             todaypos_val = [x[1] for x in today_pos]
@@ -39,7 +39,7 @@ class portfolio:
                 logret = 0
             else:
                 logret = m.log(1+delta_chg/prev_total)
-            portfolio.append([val,prev_total,pos_diff,delta_chg,logret])
+            portfolio.append([val,prev_total,delta_chg,logret])
 
         return portfolio
 

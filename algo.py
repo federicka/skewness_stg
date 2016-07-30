@@ -44,7 +44,7 @@ def getsignal(signaltable, date, shares):
     #shares should be a stock name list
     result =[]
     for idx, val in enumerate(shares):
-        result.append(val,signaltable.iloc[date][val])
+        result.append((val, signaltable.loc[date, val]))
 
     return result
 
