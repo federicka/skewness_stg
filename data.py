@@ -12,8 +12,11 @@ def get_share_close(x):
    # y = quandl.get([x])
     y = y[y.keys()[3]]
     return y
-    
+
+#get all data and get skewness stats
 sp500stk = []
-for x in sp500list['free_code'][:10]:
+for x in sp500list['free_code'][:50]:
     stk= get_share_close(x)
     sp500stk.append(stk)
+
+sp500data = pd.concat(sp500stk,ignore_index=False,axis=1)

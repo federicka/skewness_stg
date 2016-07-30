@@ -4,6 +4,17 @@ from yahoo_finance import Share
 import datetime
 from datetime import timedelta, datetime
 
+def daily_ret(x):
+    ret = x/x.shift(1)
+    return np.log(ret)
+
+def skewness(x):
+    t = daily_ret(x)
+    meanret =t.mean()
+    std = t.std()
+    skew = np.mean(np.power((t - meanret),3)) / np.power(std,3)
+    return skew
+
 def signal_on_rank(data,selectionptg,window):
     days = window * 22
     stklist = list(data.columns.values)
